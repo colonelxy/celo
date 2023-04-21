@@ -1,0 +1,33 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: NFTMarketplace
+    network: celo-alfajores
+    source:
+      address: "0x8c85B1f17FFe56F2d0719B27f228b66463042640"
+      abi: NFTMarketplace
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ListingCancelled
+        - ListingCreated
+        - ListingPurchased
+        - ListingUpdated
+      abis:
+        - name: NFTMarketplace
+          file: ./abis/NFTMarketplace.json
+      eventHandlers:
+        - event: ListingCancelled(address,uint256,address)
+          handler: handleListingCancelled
+        - event: ListingCreated(address,uint256,uint256,address)
+          handler: handleListingCreated
+        - event: ListingPurchased(address,uint256,address,address)
+          handler: handleListingPurchased
+        - event: ListingUpdated(address,uint256,uint256,address)
+          handler: handleListingUpdated
+      file: ./src/nft-marketplace.ts
