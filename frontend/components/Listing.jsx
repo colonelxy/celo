@@ -17,9 +17,9 @@ export default function Listing(props) {
         signerOrProvider: provider,
     });
 
-    const isOwner = address.toLocaleLowerCase() === props.seller.toLocaleLowerCase();
+    const isOwner = address.toLowerCase() === props.seller.toLowerCase();
 
-    async function fetchNFTDEtails() {
+    async function fetchNFTDetails() {
         try{
             let tokenURI = await ERC721Contract.tokenURI(0);
             tokenURI = tokenURI.replace("ipfs://", "https://ipfs.io/ipfs/");

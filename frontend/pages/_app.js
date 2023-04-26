@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import "@rainbow-me/rainbowkit";
+import "@rainbow-me/rainbowkit/styles.css";
 
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
@@ -59,3 +59,5 @@ function MyApp({ Component, pageProps}) {
     </WagmiConfig>
   );
 }
+
+export default MyApp;

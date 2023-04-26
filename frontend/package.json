@@ -26,5 +26,8 @@
     "typescript": "5.0.4",
     "urql": "^4.0.0",
     "wagmi": "^0.12.12"
+  },
+  "devDependencies": {
+    "eslint-plugin-prettier": "^4.2.1"
   }
 }
