@@ -1,7 +1,7 @@
-require("@nomicfoundation/hardhat-toolbox");
-require("dotenv").config({path: ".env"});
+require("@nomiclabs/hardhat-waffle");
+require("dotenv").config({ path: ".env" });
 
-/** @type import('hardhat/config').HardhatUserConfig */
+// Add the alfajores network to the configuration
 module.exports = {
   solidity: "0.8.18",
   networks: {

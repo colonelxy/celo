@@ -1,9 +1,9 @@
-import '@/styles/globals.css'
 import "@rainbow-me/rainbowkit/styles.css";
+import "../styles/globals.css";
 
-import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import {jsonRpcProvider} from "wagmi/providers/jsonRpc";
+import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 
 const celoChain = {
@@ -27,20 +27,22 @@ const celoChain = {
   testnet: true,
 };
 
-const {chains, provider} = configureChains (
+
+const { chains, provider } = configureChains(
   [celoChain],
   [
     jsonRpcProvider({
       rpc: (chain) => {
-        if(chain.id != celoChain.id) return null;
-        return { http: chain.rpcUrls.default};
+        if (chain.id !== celoChain.id) return null;
+        return { http: chain.rpcUrls.default };
       },
     }),
   ]
 );
 
-const {connectors} = getDefaultWallets({
-  appName: "Celo NFT Marketplace", chains,
+const { connectors } = getDefaultWallets({
+  appName: "Celo NFT Marketplace",
+  chains,
 });
 
 
@@ -50,8 +52,9 @@ const wagmiClient = createClient({
   provider,
 });
 
-function MyApp({ Component, pageProps}) {
-  return(
+
+function MyApp({ Component, pageProps }) {
+  return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <Component {...pageProps} />

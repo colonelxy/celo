@@ -12,7 +12,5 @@ npx hardhat node
 npx hardhat run scripts/deploy.js
 ```
 
-
-Celo NFT deployed to:  0x0c9516a0b6EaEACC6adF8FdD7ce77db9F5896331
-
-NFT Marketplace deployed to:  0x8c85B1f17FFe56F2d0719B27f228b66463042640
+Celo NFT deployed to: 0x56c9De1543bc5Cd69a9d20ccb2eA6a5824Eb1AaF
+NFT Marketplace deployed to: 0x53163204Cdc2C4f11d688dba983fc86EB26f22Bf

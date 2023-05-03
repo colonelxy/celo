@@ -1,23 +1,32 @@
-const {ethers} = require("hardhat");
+const { ethers } = require("hardhat");
 
 async function main() {
+  // Load the NFT contract artifacts
   const CeloNFTFactory = await ethers.getContractFactory("CeloNFT");
 
-  const celoNFTCon = await CeloNFTFactory.deploy();
-  await celoNFTCon.deployed();
+  // Deploy the contract
+  const celoNftContract = await CeloNFTFactory.deploy();
+  await celoNftContract.deployed();
 
-  console.log("Celo NFT deployed to: ", celoNFTCon.address);
+  // Print the address of the NFT contract
+  console.log("Celo NFT deployed to:", celoNftContract.address);
 
-  
+  // Load the marketplace contract artifacts
+  const NFTMarketplaceFactory = await ethers.getContractFactory(
+    "NFTMarketplace"
+  );
 
-  const NFTMRKFactory = await ethers.getContractFactory("NFTMarketplace");
-  const NFTMRKContract = await NFTMRKFactory.deploy();
-  await NFTMRKContract.deployed();
+  // Deploy the contract
+  const nftMarketplaceContract = await NFTMarketplaceFactory.deploy();
 
-  console.log("NFT Marketplace deployed to: ", NFTMRKContract.address);
+  // Wait for deployment to finish
+  await nftMarketplaceContract.deployed();
+
+  // Log the address of the new contract
+  console.log("NFT Marketplace deployed to:", nftMarketplaceContract.address);
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exitCode =1;
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
 });
